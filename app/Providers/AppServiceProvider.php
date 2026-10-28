@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Schema;
 use App\Models\Batch;
 use App\Models\Category;
 use App\Models\Customer;
@@ -39,6 +40,7 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+		Schema::defaultStringLength(191);
         // Catch N+1 queries, silently discarded attributes and typos in development.
         Model::shouldBeStrict(! $this->app->isProduction());
 
